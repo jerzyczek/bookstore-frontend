@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CategoryForm} from '../forms/category-form';
 import {HttpService} from '../http.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {CategoryUpdate} from '../forms/category-update';
 
 @Component({
   selector: 'app-admin-category-add',
@@ -20,9 +21,26 @@ export class AdminCategoryAddComponent implements OnInit {
     name: ''
   };
 
+  formUpdate: CategoryUpdate = {
+    newName: '',
+    oldName: ''
+  };
+
   constructor(private httpService: HttpService, private router: Router, private routeActivate: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.categoryName = this.routeActivate.snapshot.paramMap.get('id');
+    this.header = !this.categoryName ? 'Dodaj kategorię' : 'Edytuj kategorię';
+
+    if (this.categoryName) {
+      this.httpService.getCategory(this.categoryName).subscribe(data => {
+        this.form.name = data.name;
+      }, error => {
+        this.header = 'Dodaj kategorię';
+        this.categoryName = '';
+        this.router.navigate(['/admin/category/add']);
+      });
+    }
   }
 
   save(): void {
@@ -35,7 +53,17 @@ export class AdminCategoryAddComponent implements OnInit {
   }
 
   edit(): void {
-
+    this.failureMessage = '';
+    this.successMessage = '';
+    this.formUpdate.oldName = this.categoryName;
+    this.formUpdate.newName = this.form.name;
+    this.httpService.putCategory(this.formUpdate).subscribe(data => {
+        this.successMessage = 'Kategoria została edytowana';
+        window.location.href = '/admin/category';
+      },
+      error => {
+        this.failureMessage = 'Nie udało sie edytować autora';
+      });
   }
 
 }

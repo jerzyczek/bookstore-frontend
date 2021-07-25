@@ -19,6 +19,7 @@ import {Order} from './model/order';
 import {ProductForm} from './forms/product-form';
 import {OrderDetails} from './model/order-details';
 import {Address} from './forms/address';
+import {CategoryUpdate} from './forms/category-update';
 
 @Injectable({
   providedIn: 'root'
@@ -158,4 +159,14 @@ export class HttpService {
   saveAddress(form: Address): Observable<UserDetails> {
     return this.httpClient.post<UserDetails>(`${this.apiURL}${this.USER_RESOURCE}/address`, form);
   }
+
+  getCategory(categoryName: string): Observable<CategoryDetails> {
+    return this.httpClient.get<CategoryDetails>(`${this.apiURL}${this.CATEGORY_RESOURCE}`,
+      {params: new HttpParams().set('categoryName', categoryName.toString())});
+  }
+
+  putCategory(categoryName: CategoryUpdate): Observable<CategoryDetails> {
+    return this.httpClient.put<CategoryDetails>(`${this.apiURL}${this.CATEGORY_RESOURCE}`, categoryName);
+  }
+
 }
