@@ -1,0 +1,69 @@
+<div class="row">
+  <aside class="col-lg-9">
+    <div class="card">
+
+      <div class="table-responsive">
+
+        <table class="table table-borderless table-shopping-cart" *ngFor="let orderRow of orderRows">
+          <thead class="text-muted">
+          <tr class="small text-uppercase">
+            <th scope="col">Product</th>
+            <th scope="col" width="120">Cena</th>
+            <th scope="col" class="text-right d-none d-md-block" width="200"> </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <figure class="itemside align-items-center">
+                <div class="aside"><img src="{{orderRow.productDto.imgURL}}" class="img-sm" width="200" height="200"></div>
+                <figcaption class="info">
+                  <h5 class="title text-dark">{{orderRow.productDto.name}}</h5>
+                  <p class="text-muted small">Autor: {{orderRow.productDto.author.lastName}} {{orderRow.productDto.author.firstname}}</p>
+                </figcaption>
+              </figure>
+            </td>
+            <td>
+              <div class="price-wrap">
+                <var class="price">{{orderRow.productDto.price}} PLN</var>
+              </div> <!-- price-wrap .// -->
+            </td>
+            <td class="text-right d-none d-md-block">
+              <button class="btn btn-danger" (click)="removeOrderRow(orderRow.orderRowId)">Usuń</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div> <!-- table-responsive.// -->
+
+      <div class="card-body border-top" *ngIf="isCartEmpty && isUserLogged">
+        <p class="icontext"><i class="icon text-success fa fa-truck"></i>Dostawa</p>
+        <div class="form-group" *ngFor="let shipping of shippingMethod">
+          <label class="form-check">
+            <input class="form-check-input" checked="" name="myradio" type="radio" value="{{shipping}}" required="true"
+                   (change)="handleChange(shipping)">
+            <span class="form-check-label">
+            {{shipping.name}} {{shipping.price}} PLN
+            </span>
+          </label>
+        </div>
+      </div> <!-- card-body.// -->
+
+    </div> <!-- card.// -->
+
+  </aside> <!-- col.// -->
+  <aside class="col-lg-3">
+    <div class="card">
+      <div class="card-body">
+        <dl class="dlist-align">
+          <dt>Total:</dt>
+          <dd class="text-right text-dark b"><strong>{{priceSum() | currency}} PLN</strong></dd>
+        </dl>
+        <hr>
+        <button *ngIf="isCartEmpty" (click)="saveOrder(orderRows)" class="btn btn-primary btn-block">Dokonaj zakupu</button>
+      </div> <!-- card-body.// -->
+    </div> <!-- card.// -->
+
+  </aside> <!-- col.// -->
+</div> <!-- row.// -->

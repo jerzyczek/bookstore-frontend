@@ -1,0 +1,23 @@
+<article *ngFor="let product of products" class="card card-product-list">
+  <div class="card-body">
+    <div class="row">
+      <aside class="col-sm-3">
+        <img src="{{product.imgURL}}" height="200" width="200">
+      </aside> <!-- col.// -->
+      <article class="col-sm-6">
+        <h3>{{product.name}}</h3>
+        <p>Opis: {{product.description}}</p>
+        <p>Autor: {{product.author.firstname}} {{product.author.lastName}}</p>
+      </article> <!-- col.// -->
+      <aside class="col-sm-3">
+        <div class="price-wrap mt-2">
+          <span class="price h5">{{product.price}} PLN</span>
+        </div> <!-- info-price-detail // -->
+        <br>
+        <p>
+          <button *ngIf="isUserLogged" (click)="addToCart(product.id)" class="btn btn-primary">Kup teraz</button>
+        </p>
+      </aside> <!-- col.// -->
+    </div> <!-- row.// -->
+  </div> <!-- card-body .// -->
+</article>

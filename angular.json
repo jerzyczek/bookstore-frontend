@@ -24,9 +24,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/bootstrap/fonts/fontawesome/css/all.css",
+              "src/assets/bootstrap/css/bootstrap.css",
+              "src/assets/bootstrap/css/responsive.css",
+              "src/assets/bootstrap/css/ui.css",
+              "src/assets/bootstrap/css/base.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/bootstrap/js/jquery-2.0.0.min.js",
+              "src/assets/bootstrap/js/script.js"
+            ]
           },
           "configurations": {
             "production": {

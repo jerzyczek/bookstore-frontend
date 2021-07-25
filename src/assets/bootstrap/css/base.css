@@ -1,0 +1,40 @@
+.register-button {
+    width: 50%;
+}
+
+.registration {
+    margin-top: 50px;
+}
+
+.login {
+    margin-top: 50px;
+}
+
+.change-password-button {
+    margin-top: 20px;
+}
+
+.category-margin {
+    margin-top: 30px;
+}
+
+textarea.form-control {
+    height: 200px;
+}
+
+#submit-delete {
+    margin-left: 50px;
+}
+
+.listitems {
+    list-style-type: none;
+}
+
+.product-no-stock {
+    color: red;
+}
+
+.hide-div {
+    display: none;
+}
+

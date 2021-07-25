@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Imię</th>
+        <th scope="col">Nazwisko</th>
+        <th scope="col">Akcja</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let author of authors">
+      <tr>
+        <td>{{author.id}}</td>
+        <td>{{author.firstname}}</td>
+        <td>{{author.lastName}}</td>
+        <td>
+          <a (click)="editAuthor(author.id)"><button class="btn btn-primary btn-margin">Edytuj</button></a>
+          <a (click)="removeAuthor(author.id)"><button class="btn btn-danger">Usuń</button></a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-info" (click)="redirectToAddAuthor()">Dodaj autora</button>
+  </div>
+</div>

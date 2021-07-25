@@ -1,0 +1,85 @@
+<header class="section-header">
+  <section class="header-main border-bottom">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-sm-4 col-12">
+          <div class="brand-wrap">
+            <a href="/home"><h3>Bookstore</h3></a>
+          </div> <!-- brand-wrap.// -->
+        </div>
+        <div class="col-lg-4 col-xl-5 col-sm-8 col-9">
+
+        </div> <!-- col.// -->
+        <div class="col-lg-5 col-xl-4 col-sm-12 right">
+          <div class="widgets-wrap float-md-right">
+            <a href="/cart" class="widget-header mr-2">
+              <div class="icon">
+                <i class="icon-sm rounded-circle border fa fa-shopping-cart"></i>
+              </div>
+            </a>
+            <div class="widget-header dropdown right">
+              <a href="#" data-toggle="dropdown" data-offset="20,10" aria-expanded="false">
+                <div class="icontext">
+                  <div class="icon">
+                    <i class="icon-sm rounded-circle border fa fa-user"></i>
+                  </div>
+                  <div class="text">
+                    <div><i class="fa fa-caret-down"></i></div>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(154px, 42px, 0px);">
+                <div *ngIf="!isUserLogged">
+                  <form class="px-4 py-3">
+                    <div class="form-group">
+                      <button type="submit" (click)="signuppage()" class="btn btn-primary">Rejestracja</button>
+                    </div>
+                    <div class="form-group">
+                      <button (click)="loginpage()" type="submit" class="btn btn-primary">Logowanie</button>
+                    </div>
+                  </form>
+                </div>
+                <div *ngIf="isUserLogged">
+                  <form class="px-4 py-3">
+                    <div class="form-group">
+                      <button (click)="logout()" type="submit" class="btn btn-primary">Wyloguj sie</button>
+                    </div>
+                    <div class="form-group">
+                      <button (click)="orderspage()" type="submit" class="btn btn-primary">Zamówienia</button>
+                    </div>
+                    <div class="form-group">
+                      <button (click)="addresspage()" type="submit" class="btn btn-primary">Adres</button>
+                    </div>
+                    <div class="form-group" *ngIf="isAdmin">
+                      <button (click)="admin()" type="submit" class="btn btn-primary">Panel administratora</button>
+                    </div>
+                  </form>
+                </div>
+              </div> <!--  dropdown-menu .// -->
+            </div>  <!-- widget-header .// -->
+          </div> <!-- widgets-wrap.// -->
+        </div> <!-- col.// -->
+      </div> <!-- row.// -->
+    </div> <!-- container.// -->
+  </section> <!-- header-main .// -->
+</header> <!-- section-header.// -->
+<br>
+<nav class="navbar navbar-main navbar-expand-lg border-bottom">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav3"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main_nav3">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link pl-0" href="/home"> <strong>Strona główna</strong></a>
+        </li>
+        <li class="nav-item" *ngFor="let category of categories;">
+          <a [routerLink]="['/category', { name: category.name }]" class="nav-link pl-0" (click)="showCategory(category.name)"><strong>{{category.name}}</strong></a>
+        </li>
+      </ul>
+    </div> <!-- collapse .// -->
+  </div> <!-- container .// -->
+</nav> <!-- navbar main end.// -->
+<br>

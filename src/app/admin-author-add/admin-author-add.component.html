@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <form action="#">
+      <h3>{{header}}</h3>
+      <div class="form-group">
+        <label for="firstname">Imię</label>
+        <input required firstname [(ngModel)]="form.firstname" #firstname="ngModel" type="text" name="firstname" id="firstname"
+               class="form-control">
+        <small class="text-center text-danger"
+               *ngIf="firstname.touched && firstname.errors != null && firstname.errors.required">Imię jest wymagane</small>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Nazwisko</label>
+        <input required lastname [(ngModel)]="form.lastname" #lastname="ngModel" type="text" name="lastname" id="lastname"
+               class="form-control">
+        <small class="text-center text-danger"
+               *ngIf="lastname.touched && lastname.errors != null && lastname.errors.required">Nazwisko jest wymagane</small>
+      </div>
+      <div class="col">
+        <div *ngIf="authorId; else addAuthorButton">
+          <button class="btn btn-primary btn-block btn-margin" type="submit" (click)="edit()">Edytuj autora</button>
+        </div>
+        <ng-template #addAuthorButton>
+          <button class="btn btn-primary btn-block" type="submit" (click)="save()">Dodaj autora</button>
+        </ng-template>
+      </div>
+    </form>
+  </div>
+</div>

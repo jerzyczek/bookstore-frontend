@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <form action="#">
+      <h3>{{header}}</h3>
+      <div class="form-group">
+        <label for="name">Nazwa</label>
+        <input required name [(ngModel)]="form.name" #name="ngModel" type="text" name="name" id="name"
+               class="form-control">
+        <small class="text-center text-danger"
+               *ngIf="name.touched && name.errors != null && name.errors.required">Nazwa jest wymagana</small>
+      </div>
+      <div class="col">
+        <div *ngIf="categoryName; else addCategoryButton">
+          <button class="btn btn-primary btn-block" type="submit" (click)="edit()">Edytuj kategorie</button>
+        </div>
+        <ng-template #addCategoryButton>
+          <button class="btn btn-primary btn-block" type="submit" (click)="save()">Dodaj kategorie</button>
+        </ng-template>
+      </div>
+    </form>
+  </div>
+</div>

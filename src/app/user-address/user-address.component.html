@@ -1,0 +1,51 @@
+<div class="modal-body">
+  <form name="form">
+    <div class="form-group">
+      <label for="street">Ulica</label>
+      <input required street [(ngModel)]="form.street" #street="ngModel" type="street" name="street" id="street"
+             class="form-control">
+      <small class="text-center text-danger"
+             *ngIf="street.touched && street.errors != null && street.errors.required">Ulica jest wymagana</small>
+    </div>
+    <div class="form-group">
+      <label for="street">Numer budynku</label>
+      <input required buildingNumber [(ngModel)]="form.buildingNumber" #buildingNumber="ngModel" type="buildingNumber" name="buildingNumber" id="buildingNumber"
+             class="form-control">
+      <small class="text-center text-danger"
+             *ngIf="buildingNumber.touched && buildingNumber.errors != null && buildingNumber.errors.required">Numer budynku jest wymagany</small>
+    </div>
+    <div class="form-group">
+      <label for="street">Kod pocztowy</label>
+      <input required zipCode [(ngModel)]="form.zipCode" #zip_code="ngModel" type="zipCode" name="zipCode" id="zipCode"
+             class="form-control">
+      <small class="text-center text-danger"
+             *ngIf="zip_code.touched && zip_code.errors != null && zip_code.errors.required">Kod pocztowy jest wymagany</small>
+    </div>
+    <div class="form-group">
+      <label for="street">Miasto</label>
+      <input required city [(ngModel)]="form.city" #city="ngModel" type="city" name="city" id="city"
+             class="form-control">
+      <small class="text-center text-danger"
+             *ngIf="city.touched && city.errors != null && city.errors.required">Miasto jest wymagane</small>
+    </div>
+    <div class="form-group mt-4">
+      <div class="row">
+        <div class="col">
+          <small class="text-center text-success"
+                 *ngIf="successMessage">{{successMessage}}</small>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <small class="text-center text-danger"
+                 *ngIf="failureMessage">{{failureMessage}}</small>
+        </div>
+      </div>
+      <div class="row text-center mb-3">
+        <div class="col">
+          <button class="btn btn-primary btn-block" type="submit" (click)="addAddress()">Zmień adres</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center login">
+    <aside class="col-md-6">
+      <div class="card col-12">
+        <div class="card-body">
+          <h4 class="card-title mb-4">Zaloguj się</h4>
+          <form class="default" action="#">
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                </div>
+                <input required email [(ngModel)]="form.email" #email="ngModel" type="email" name="email" id="email"
+                       class="form-control">
+                <small class="text-center text-danger"
+                       *ngIf="email.touched && email.errors != null && email.errors.required">Email jest wymagany</small>
+                <small class="text-center text-danger"
+                       *ngIf="email.touched && email.errors != null && email.errors.email">Niepoprawny adres email</small>
+              </div> <!-- input-group.// -->
+            </div> <!-- form-group// -->
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input required [(ngModel)]="form.password" #password="ngModel" name="password" id="password" type="password"
+                       class="form-control">
+                <small class="text-center text-danger" *ngIf="password.touched && !password.valid">Hasło jest wymagane</small>
+              </div> <!-- input-group.// -->
+            </div> <!-- form-group// -->
+            <div class="form-group">
+            </div> <!-- form-group form-check .// -->
+            <div class="form-group">
+              <button id="login-button" type="submit" (click)="loginUser()" class="btn btn-primary btn-block">Zaloguj</button>
+              <div class="col mb-2">
+                <small class="text-center text-danger" *ngIf="loginErrorMessage">{{loginErrorMessage}}</small>
+              </div>
+            </div> <!-- form-group// -->
+          </form>
+        </div> <!-- card-body.// -->
+      </div> <!-- card .// -->
+    </aside>
+  </div> <!--row-->
+</div>

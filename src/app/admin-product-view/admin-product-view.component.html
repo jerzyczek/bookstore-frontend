@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nazwa</th>
+        <th scope="col">Cena</th>
+        <th scope="col">Kategoria</th>
+        <th scope="col">Autor</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let product of products">
+      <tr>
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.category.name}}</td>
+        <td>{{product.author.firstname}} {{product.author.lastName}}</td>
+        <td>
+          <a (click)="editProduct(product.id)"><button class="btn btn-primary btn-margin">Edytuj</button></a>
+          <a (click)="removeProduct(product.id)"><button class="btn btn-danger">Usuń</button></a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-info" (click)="redirectToAddProduct()">Dodaj product</button>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <form action="#">
+      <h3>{{header}}</h3>
+      <div class="form-group">
+        <label for="name">Nazwa</label>
+        <input required name [(ngModel)]="form.name" #name="ngModel" type="text" name="name" id="name"
+               class="form-control">
+        <small class="text-center text-danger"
+               *ngIf="name.touched && name.errors != null && name.errors.required">Nazwa jest wymagana</small>
+      </div>
+      <div class="form-group">
+        <label for="description">Opis</label>
+        <input required description [(ngModel)]="form.description" #description="ngModel" type="text" name="description" id="description"
+               class="form-control">
+        <small class="text-center text-danger"
+               *ngIf="description.touched && description.errors != null && description.errors.required">Opis jest wymagany</small>
+      </div>
+      <div class="form-group">
+        <label for="price">Cena</label>
+        <input required price [(ngModel)]="form.price" #price="ngModel" type="text" name="price" id="price"
+               class="form-control">
+        <small class="text-center text-danger"
+               *ngIf="price.touched && price.errors != null && price.errors.required">Cena jest wymagany</small>
+      </div>
+      <div class="form-group">
+        <label for="price">URL Obrazka</label>
+        <input required imgURL [(ngModel)]="form.imgURL" #imgURL="ngModel" type="text" name="imgURL" id="imgURL"
+               class="form-control">
+        <small class="text-center text-danger"
+               *ngIf="imgURL.touched && imgURL.errors != null && imgURL.errors.required">Url obrazka jest wymagana</small>
+      </div>
+      <label class="col-form-label col-lg-3">Kategorie</label>
+      <div class="form-group row">
+        <div class="col-lg-9">
+          <select required category id="category" name="category"  [(ngModel)]="form.category" #category="ngModel" class="form-control multiselect-select-all" data-fouc>
+            <option *ngFor="let category of categories;" [ngValue]="category">{{category.name}}</option>
+          </select>
+          <small class="text-center text-danger"
+                 *ngIf="category.touched && category.errors != null && category.errors.required">Kategoria jest wymagana</small>
+        </div>
+      </div>
+      <label class="col-form-label col-lg-3">Autorzy</label>
+      <div class="form-group row">
+        <div class="col-lg-9">
+          <select required author id="author" name="author"  [(ngModel)]="form.author" #author="ngModel" class="form-control multiselect-select-all" data-fouc>
+            <option *ngFor="let author of authors;"  [ngValue]="author">{{author.firstname}} {{author.lastName}}</option>
+          </select>
+          <small class="text-center text-danger"
+                 *ngIf="author.touched && author.errors != null && author.errors.required">Autor jest wymagany</small>
+        </div>
+      </div>
+      <div class="col">
+        <div *ngIf="productId; else addAuthorButton">
+          <button class="btn btn-primary btn-block" type="submit" (click)="edit(productId)">Edytuj produkt</button>
+        </div>
+        <ng-template #addAuthorButton>
+          <button class="btn btn-primary btn-block" type="submit" (click)="saveProduct()">Dodaj produkt</button>
+        </ng-template>
+      </div>
+    </form>
+  </div>
+</div>
